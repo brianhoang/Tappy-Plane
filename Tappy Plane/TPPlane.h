@@ -10,4 +10,6 @@
 
 @interface TPPlane : SKSpriteNode
 
+-(void)setRandomColor; 
+
 @end

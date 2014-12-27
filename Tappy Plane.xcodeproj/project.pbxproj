@@ -17,6 +17,7 @@
 		93A50C111A4E6B4700B09EC2 /* TPGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50C101A4E6B4700B09EC2 /* TPGameScene.m */; };
 		93A50C131A4E6F8300B09EC2 /* Planes.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 93A50C121A4E6F8300B09EC2 /* Planes.atlas */; };
 		93A50C861A4E75A000B09EC2 /* TPPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50C851A4E75A000B09EC2 /* TPPlane.m */; };
+		93A50C881A4E782B00B09EC2 /* PlaneAnimation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		93A50C121A4E6F8300B09EC2 /* Planes.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Planes.atlas; sourceTree = "<group>"; };
 		93A50C841A4E75A000B09EC2 /* TPPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPlane.h; sourceTree = "<group>"; };
 		93A50C851A4E75A000B09EC2 /* TPPlane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPlane.m; sourceTree = "<group>"; };
+		93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlaneAnimation.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 		93A50BE31A4E6AA500B09EC2 /* Tappy Plane */ = {
 			isa = PBXGroup;
 			children = (
+				93A50C891A4E796D00B09EC2 /* Resources */,
 				93A50C121A4E6F8300B09EC2 /* Planes.atlas */,
 				93A50BE81A4E6AA500B09EC2 /* AppDelegate.h */,
 				93A50BE91A4E6AA500B09EC2 /* AppDelegate.m */,
@@ -130,6 +133,14 @@
 				93A50C041A4E6AA500B09EC2 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		93A50C891A4E796D00B09EC2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93A50BFA1A4E6AA500B09EC2 /* LaunchScreen.xib in Resources */,
+				93A50C881A4E782B00B09EC2 /* PlaneAnimation.plist in Resources */,
 				93A50BEF1A4E6AA500B09EC2 /* GameScene.sks in Resources */,
 				93A50C131A4E6F8300B09EC2 /* Planes.atlas in Resources */,
 				93A50BF51A4E6AA500B09EC2 /* Main.storyboard in Resources */,
