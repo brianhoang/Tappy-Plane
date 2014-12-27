@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		93A50BE71A4E6AA500B09EC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50BE61A4E6AA500B09EC2 /* main.m */; };
 		93A50BEA1A4E6AA500B09EC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50BE91A4E6AA500B09EC2 /* AppDelegate.m */; };
-		93A50BED1A4E6AA500B09EC2 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50BEC1A4E6AA500B09EC2 /* GameScene.m */; };
 		93A50BEF1A4E6AA500B09EC2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 93A50BEE1A4E6AA500B09EC2 /* GameScene.sks */; };
 		93A50BF21A4E6AA500B09EC2 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50BF11A4E6AA500B09EC2 /* GameViewController.m */; };
 		93A50BF51A4E6AA500B09EC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93A50BF31A4E6AA500B09EC2 /* Main.storyboard */; };
-		93A50BF71A4E6AA500B09EC2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93A50BF61A4E6AA500B09EC2 /* Images.xcassets */; };
 		93A50BFA1A4E6AA500B09EC2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93A50BF81A4E6AA500B09EC2 /* LaunchScreen.xib */; };
 		93A50C061A4E6AA500B09EC2 /* Tappy_PlaneTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50C051A4E6AA500B09EC2 /* Tappy_PlaneTests.m */; };
+		93A50C111A4E6B4700B09EC2 /* TPGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50C101A4E6B4700B09EC2 /* TPGameScene.m */; };
+		93A50C131A4E6F8300B09EC2 /* Planes.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 93A50C121A4E6F8300B09EC2 /* Planes.atlas */; };
+		93A50C861A4E75A000B09EC2 /* TPPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50C851A4E75A000B09EC2 /* TPPlane.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,17 +35,19 @@
 		93A50BE61A4E6AA500B09EC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		93A50BE81A4E6AA500B09EC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		93A50BE91A4E6AA500B09EC2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		93A50BEB1A4E6AA500B09EC2 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
-		93A50BEC1A4E6AA500B09EC2 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		93A50BEE1A4E6AA500B09EC2 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		93A50BF01A4E6AA500B09EC2 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		93A50BF11A4E6AA500B09EC2 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		93A50BF41A4E6AA500B09EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		93A50BF61A4E6AA500B09EC2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		93A50BF91A4E6AA500B09EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		93A50BFF1A4E6AA500B09EC2 /* Tappy PlaneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tappy PlaneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A50C041A4E6AA500B09EC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A50C051A4E6AA500B09EC2 /* Tappy_PlaneTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tappy_PlaneTests.m; sourceTree = "<group>"; };
+		93A50C0F1A4E6B4700B09EC2 /* TPGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPGameScene.h; sourceTree = "<group>"; };
+		93A50C101A4E6B4700B09EC2 /* TPGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPGameScene.m; sourceTree = "<group>"; };
+		93A50C121A4E6F8300B09EC2 /* Planes.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Planes.atlas; sourceTree = "<group>"; };
+		93A50C841A4E75A000B09EC2 /* TPPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPPlane.h; sourceTree = "<group>"; };
+		93A50C851A4E75A000B09EC2 /* TPPlane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPPlane.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,16 +89,18 @@
 		93A50BE31A4E6AA500B09EC2 /* Tappy Plane */ = {
 			isa = PBXGroup;
 			children = (
+				93A50C121A4E6F8300B09EC2 /* Planes.atlas */,
 				93A50BE81A4E6AA500B09EC2 /* AppDelegate.h */,
 				93A50BE91A4E6AA500B09EC2 /* AppDelegate.m */,
-				93A50BEB1A4E6AA500B09EC2 /* GameScene.h */,
-				93A50BEC1A4E6AA500B09EC2 /* GameScene.m */,
 				93A50BEE1A4E6AA500B09EC2 /* GameScene.sks */,
 				93A50BF01A4E6AA500B09EC2 /* GameViewController.h */,
 				93A50BF11A4E6AA500B09EC2 /* GameViewController.m */,
 				93A50BF31A4E6AA500B09EC2 /* Main.storyboard */,
-				93A50BF61A4E6AA500B09EC2 /* Images.xcassets */,
 				93A50BF81A4E6AA500B09EC2 /* LaunchScreen.xib */,
+				93A50C0F1A4E6B4700B09EC2 /* TPGameScene.h */,
+				93A50C101A4E6B4700B09EC2 /* TPGameScene.m */,
+				93A50C841A4E75A000B09EC2 /* TPPlane.h */,
+				93A50C851A4E75A000B09EC2 /* TPPlane.m */,
 				93A50BE41A4E6AA500B09EC2 /* Supporting Files */,
 			);
 			path = "Tappy Plane";
@@ -208,8 +213,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				93A50BFA1A4E6AA500B09EC2 /* LaunchScreen.xib in Resources */,
-				93A50BF71A4E6AA500B09EC2 /* Images.xcassets in Resources */,
 				93A50BEF1A4E6AA500B09EC2 /* GameScene.sks in Resources */,
+				93A50C131A4E6F8300B09EC2 /* Planes.atlas in Resources */,
 				93A50BF51A4E6AA500B09EC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,8 +235,9 @@
 			files = (
 				93A50BF21A4E6AA500B09EC2 /* GameViewController.m in Sources */,
 				93A50BEA1A4E6AA500B09EC2 /* AppDelegate.m in Sources */,
-				93A50BED1A4E6AA500B09EC2 /* GameScene.m in Sources */,
 				93A50BE71A4E6AA500B09EC2 /* main.m in Sources */,
+				93A50C861A4E75A000B09EC2 /* TPPlane.m in Sources */,
+				93A50C111A4E6B4700B09EC2 /* TPGameScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +428,7 @@
 				93A50C0B1A4E6AA500B09EC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		93A50C0C1A4E6AA500B09EC2 /* Build configuration list for PBXNativeTarget "Tappy PlaneTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +437,7 @@
 				93A50C0E1A4E6AA500B09EC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
