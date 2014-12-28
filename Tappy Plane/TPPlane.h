@@ -10,6 +10,11 @@
 
 @interface TPPlane : SKSpriteNode
 
+//see if its moving or not
+@property (nonatomic) BOOL engineRunning;
+@property (nonatomic) BOOL accelerating;
+
 -(void)setRandomColor; 
+-(void)update;
 
 @end
