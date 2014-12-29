@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930A1D0F1A510A7B00D7B116 /* ScrollingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 930A1D0E1A510A7B00D7B116 /* ScrollingNode.m */; };
+		930A1D121A510BB600D7B116 /* ScrollingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 930A1D111A510BB600D7B116 /* ScrollingLayer.m */; };
 		93A052B81A4FC56E000AC325 /* PlaneTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 93A052B61A4FC56E000AC325 /* PlaneTrail.sks */; };
 		93A052B91A4FC56E000AC325 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A052B71A4FC56E000AC325 /* spark.png */; };
-		93A052BC1A4FD761000AC325 /* ScrollingNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A052BB1A4FD761000AC325 /* ScrollingNode.m */; };
-		93A052C21A4FD9C0000AC325 /* ScrollLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A052C11A4FD9C0000AC325 /* ScrollLayer.m */; };
 		93A50BE71A4E6AA500B09EC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50BE61A4E6AA500B09EC2 /* main.m */; };
 		93A50BEA1A4E6AA500B09EC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50BE91A4E6AA500B09EC2 /* AppDelegate.m */; };
 		93A50BEF1A4E6AA500B09EC2 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 93A50BEE1A4E6AA500B09EC2 /* GameScene.sks */; };
@@ -23,7 +23,6 @@
 		93A50C861A4E75A000B09EC2 /* TPPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50C851A4E75A000B09EC2 /* TPPlane.m */; };
 		93A50C881A4E782B00B09EC2 /* PlaneAnimation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */; };
 		93BD2F391A4FF7E70099A96D /* SCTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BD2F381A4FF7E70099A96D /* SCTileNode.m */; };
-		93BD2F3B1A4FFAC90099A96D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93BD2F3A1A4FFAC90099A96D /* background@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,12 +36,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		930A1D0D1A510A7B00D7B116 /* ScrollingNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingNode.h; sourceTree = "<group>"; };
+		930A1D0E1A510A7B00D7B116 /* ScrollingNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingNode.m; sourceTree = "<group>"; };
+		930A1D101A510BB600D7B116 /* ScrollingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingLayer.h; sourceTree = "<group>"; };
+		930A1D111A510BB600D7B116 /* ScrollingLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingLayer.m; sourceTree = "<group>"; };
+		930A1D141A512DA100D7B116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Base; path = Base.lproj/Constants.h; sourceTree = "<group>"; };
+		930A1D161A512DA100D7B116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Base; path = Base.lproj/Constants.m; sourceTree = "<group>"; };
 		93A052B61A4FC56E000AC325 /* PlaneTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaneTrail.sks; sourceTree = "<group>"; };
 		93A052B71A4FC56E000AC325 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		93A052BA1A4FD761000AC325 /* ScrollingNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollingNode.h; sourceTree = "<group>"; };
-		93A052BB1A4FD761000AC325 /* ScrollingNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollingNode.m; sourceTree = "<group>"; };
-		93A052C01A4FD9C0000AC325 /* ScrollLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollLayer.h; sourceTree = "<group>"; };
-		93A052C11A4FD9C0000AC325 /* ScrollLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollLayer.m; sourceTree = "<group>"; };
 		93A50BE11A4E6AA500B09EC2 /* Tappy Plane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tappy Plane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A50BE51A4E6AA500B09EC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93A50BE61A4E6AA500B09EC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlaneAnimation.plist; sourceTree = "<group>"; };
 		93BD2F371A4FF7E70099A96D /* SCTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTileNode.h; sourceTree = "<group>"; };
 		93BD2F381A4FF7E70099A96D /* SCTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTileNode.m; sourceTree = "<group>"; };
-		93BD2F3A1A4FFAC90099A96D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +106,6 @@
 		93A50BE31A4E6AA500B09EC2 /* Tappy Plane */ = {
 			isa = PBXGroup;
 			children = (
-				93BD2F3A1A4FFAC90099A96D /* background@2x.png */,
 				93A50C891A4E796D00B09EC2 /* Resources */,
 				93A50C121A4E6F8300B09EC2 /* Graphics.atlas */,
 				93A50BE81A4E6AA500B09EC2 /* AppDelegate.h */,
@@ -123,12 +122,14 @@
 				93A50BE41A4E6AA500B09EC2 /* Supporting Files */,
 				93A052B61A4FC56E000AC325 /* PlaneTrail.sks */,
 				93A052B71A4FC56E000AC325 /* spark.png */,
-				93A052BA1A4FD761000AC325 /* ScrollingNode.h */,
-				93A052BB1A4FD761000AC325 /* ScrollingNode.m */,
-				93A052C01A4FD9C0000AC325 /* ScrollLayer.h */,
-				93A052C11A4FD9C0000AC325 /* ScrollLayer.m */,
 				93BD2F371A4FF7E70099A96D /* SCTileNode.h */,
 				93BD2F381A4FF7E70099A96D /* SCTileNode.m */,
+				930A1D0D1A510A7B00D7B116 /* ScrollingNode.h */,
+				930A1D0E1A510A7B00D7B116 /* ScrollingNode.m */,
+				930A1D101A510BB600D7B116 /* ScrollingLayer.h */,
+				930A1D111A510BB600D7B116 /* ScrollingLayer.m */,
+				930A1D131A512DA100D7B116 /* Constants.h */,
+				930A1D151A512DA100D7B116 /* Constants.m */,
 			);
 			path = "Tappy Plane";
 			sourceTree = "<group>";
@@ -253,7 +254,6 @@
 				93A052B91A4FC56E000AC325 /* spark.png in Resources */,
 				93A052B81A4FC56E000AC325 /* PlaneTrail.sks in Resources */,
 				93A50C131A4E6F8300B09EC2 /* Graphics.atlas in Resources */,
-				93BD2F3B1A4FFAC90099A96D /* background@2x.png in Resources */,
 				93A50BF51A4E6AA500B09EC2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,11 +275,11 @@
 				93A50BF21A4E6AA500B09EC2 /* GameViewController.m in Sources */,
 				93BD2F391A4FF7E70099A96D /* SCTileNode.m in Sources */,
 				93A50BEA1A4E6AA500B09EC2 /* AppDelegate.m in Sources */,
+				930A1D0F1A510A7B00D7B116 /* ScrollingNode.m in Sources */,
 				93A50BE71A4E6AA500B09EC2 /* main.m in Sources */,
+				930A1D121A510BB600D7B116 /* ScrollingLayer.m in Sources */,
 				93A50C861A4E75A000B09EC2 /* TPPlane.m in Sources */,
 				93A50C111A4E6B4700B09EC2 /* TPGameScene.m in Sources */,
-				93A052BC1A4FD761000AC325 /* ScrollingNode.m in Sources */,
-				93A052C21A4FD9C0000AC325 /* ScrollLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +302,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		930A1D131A512DA100D7B116 /* Constants.h */ = {
+			isa = PBXVariantGroup;
+			children = (
+				930A1D141A512DA100D7B116 /* Base */,
+			);
+			name = Constants.h;
+			sourceTree = "<group>";
+		};
+		930A1D151A512DA100D7B116 /* Constants.m */ = {
+			isa = PBXVariantGroup;
+			children = (
+				930A1D161A512DA100D7B116 /* Base */,
+			);
+			name = Constants.m;
+			sourceTree = "<group>";
+		};
 		93A50BF31A4E6AA500B09EC2 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -1,37 +1,37 @@
 //
-//  ScrollLayer.m
+//  ScrollingLayer.m
 //  Tappy Plane
 //
-//  Created by Brian Hoang on 12/27/14.
+//  Created by Brian Hoang on 12/28/14.
 //  Copyright (c) 2014 Brian Hoang. All rights reserved.
 //
 
-#import "ScrollLayer.h"
+#import "ScrollingLayer.h"
 
-@interface ScrollingNode()
+@interface ScrollingLayer()
 
+//@property (nonatomic) SKSpriteNode *nextTile;
+//@property (nonatomic) SKSpriteNode *prevTile;
 @property (nonatomic) SKSpriteNode *rightmostTile;
-
 @end
 
 
-@implementation ScrollLayer
+@implementation ScrollingLayer
 
--(id)initWithTiles:(NSArray *)tilesSprite
+-(id)initWithTiles:(NSArray *)tileSpriteNodes
 {
-   // if (self = [super init]) {
-        for (SKSpriteNode *tile in tilesSprite) {
+    if(self = [super init]){
+        for (SKSpriteNode *tile in tileSpriteNodes){
             tile.anchorPoint = CGPointZero;
             tile.name = @"Tile";
             [self addChild:tile];
         }
         [self layoutTiles];
-   // }
+    }
     return self;
 }
 
-//loop throught all tiles on node and place them one after another
-//dont care about order of tiles
+
 -(void)layoutTiles
 {
     self.rightmostTile = nil;
@@ -43,10 +43,9 @@
     
 }
 
-
--(void)updateWithTimeElapsed:(NSTimeInterval)timeElapsed
+-(void)updateWithTimesElapsed:(NSTimeInterval)timeElapsed
 {
-    [super updateWithTimeElpased:timeElapsed];
+    [super updateWithTimesElapsed:timeElapsed];
     if (self.scrolling && self.horizontalScrollSpeed < 0 && self.scene) {
         [self enumerateChildNodesWithName:@"Tile" usingBlock:^(SKNode *node, BOOL *stop) {
             CGPoint nodePostionInScene = [self convertPoint:node.position toNode:self.scene];
@@ -59,7 +58,5 @@
         }];
     }
 }
-
-
 
 @end

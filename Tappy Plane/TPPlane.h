@@ -13,8 +13,10 @@
 //see if its moving or not
 @property (nonatomic) BOOL engineRunning;
 @property (nonatomic) BOOL accelerating;
+@property (nonatomic) BOOL crashed;
 
--(void)setRandomColor; 
+-(void)setRandomColor;
 -(void)update;
+-(void)collide:(SKPhysicsBody*)body;
 
 @end

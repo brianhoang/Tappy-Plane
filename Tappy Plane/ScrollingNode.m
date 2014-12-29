@@ -2,7 +2,7 @@
 //  ScrollingNode.m
 //  Tappy Plane
 //
-//  Created by Brian Hoang on 12/27/14.
+//  Created by Brian Hoang on 12/28/14.
 //  Copyright (c) 2014 Brian Hoang. All rights reserved.
 //
 
@@ -10,10 +10,11 @@
 
 @implementation ScrollingNode
 
-- (void)updateWithTimeElpased:(NSTimeInterval)timeElapsed
+-(void) updateWithTimesElapsed:(NSTimeInterval)timeElapsed
 {
-    if (self.scrolling) {
-        self.position = CGPointMake(self.position.x + (self.horizontalScrollSpeed * timeElapsed), self.position.y);
+    if(self.scrolling){
+    self.position = CGPointMake(self.position.x + (self.horizontalScrollSpeed * timeElapsed), self.position.y);
     }
 }
+
 @end

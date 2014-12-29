@@ -8,138 +8,138 @@
 
 #import "TPGameScene.h"
 #import "TPPlane.h"
-#import "ScrollLayer.h"
-#import "SCTileNode.h"
+#import "ScrollingLayer.h"
+#import "Constants.h"
 
 @interface TPGameScene()
 
 @property (nonatomic) TPPlane *player;
 @property (nonatomic) SKNode  *world;
-@property (nonatomic) ScrollLayer *background;
+@property (nonatomic) ScrollingLayer *background;
+@property (nonatomic) ScrollingLayer *foreground;
 
 
 @end
 
-@implementation TPGameScene{
-    SCTileNode *_leftmostTile;
-    SCTileNode *_rightmostTile;
-    int direction;
+@implementation TPGameScene
 
-}
-
-static const CGFloat kScrollSpeed = 70;
 
 -(void)didMoveToView:(SKView *)view {
-    direction = -1;
     
-    _leftmostTile = nil;
-    _rightmostTile = nil;
+    //set background color
+    self.backgroundColor = [SKColor colorWithRed:.835294118 green:.929411765 blue:.968627451 alpha:1.0];
     
-    //get atlas files
+
+    
     SKTextureAtlas *graphics = [SKTextureAtlas atlasNamed:@"Graphics"];
+    
     
     
     //setup physcis
     self.physicsWorld.gravity = CGVectorMake(0.0, -5.5);
+    self.physicsWorld.contactDelegate = self;
     
     //setup world
     _world = [SKNode node];
     [self addChild:_world];
   
-    //setup background
-    NSMutableArray *backgroundTiles = [[NSMutableArray alloc]init];
-    for (int i = 3; i < 3; i++){
-        [ backgroundTiles addObject:[SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"background"]]];
+    /*
+    SKSpriteNode *tile1 = [SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"background"]];
+    SKSpriteNode *tile2 = [SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"background"]];
+    SKSpriteNode *tile3 = [SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"background"]];
+    SKSpriteNode *tile4 = [SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"background"]];
+     */
+    
+    NSMutableArray *backgroundTiles = [[NSMutableArray alloc] init];
+  /*
+    [backgroundTiles addObject:tile1 ];
+    [backgroundTiles addObject:tile2 ];
+    [backgroundTiles addObject:tile3 ];
+    [backgroundTiles addObject:tile4 ];
+   */
+    for(int i = 0 ; i<3; i++){
+        [backgroundTiles addObject:[SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"background"]]];
     }
- 
-
-        SCTileNode *tile = [SCTileNode spriteNodeWithImageNamed:@"background"];
-        tile.anchorPoint = CGPointZero;
-        if(!_leftmostTile) {
-            _leftmostTile = tile;
-        }
-        if(_rightmostTile){
-            tile.position = CGPointMake(_rightmostTile.position.x + _rightmostTile.size.width, _rightmostTile.position.y );
-        }else{
-            tile.position = CGPointMake(0, 240);
-        }
-        tile.prevTile = _rightmostTile;
-        _rightmostTile.nextTile = tile;
-        _rightmostTile = tile;
-    NSLog(@"sdfdsfd %f %f", tile.position.x, tile.position.y);
-
-        [_world addChild:tile];
+    //_background = nil;
+    _background = [[ScrollingLayer alloc] initWithTiles:backgroundTiles];
+    _background.position = CGPointMake(0, 30);
+    _background.horizontalScrollSpeed = -60;
+    _background.scrolling = YES;
+    [_world addChild: _background];
     
-    SCTileNode *tile1 = [SCTileNode spriteNodeWithImageNamed:@"background"];
-    tile1.anchorPoint = CGPointZero;
-    if(!_leftmostTile) {
-        _leftmostTile = tile1;
+    
+    //setup foreground
+    NSMutableArray *foregroundTile = [[NSMutableArray alloc] init];
+
+    for(int i = 0 ; i<3; i++){
+        [foregroundTile addObject:[self generateGroundTile]];
     }
-    if(_rightmostTile){
-        tile1.position = CGPointMake(_rightmostTile.position.x + _rightmostTile.size.width, _rightmostTile.position.y  ) ;
-    }else{
-        tile1.position = CGPointZero;
-    }
-
-    tile1.prevTile = _rightmostTile;
-    _rightmostTile.nextTile = tile1;
-    _rightmostTile = tile1;
-    NSLog(@"sdfdsfd %f %f", tile1.position.x, tile1.position.y);
-
-    [_world addChild:tile1];
-    
-    
-    SCTileNode *tile2 = [SCTileNode spriteNodeWithImageNamed:@"background"];
-    tile2.anchorPoint = CGPointZero;
-    if(!_leftmostTile) {
-        _leftmostTile = tile2;
-    }
-    if(_rightmostTile){
-        tile2.position = CGPointMake(_rightmostTile.position.x + _rightmostTile.size.width, _rightmostTile.position.y) ;
-    }else{
-        tile2.position = CGPointZero;
-    }
-
-    tile2.prevTile = _rightmostTile;
-    _rightmostTile.nextTile = tile2;
-    _rightmostTile = tile2;
-    NSLog(@"sdfdsfd %f %f", tile2.position.x, tile2.position.y);
-
-    [_world addChild:tile2];
-    
-    SCTileNode *tile3 = [SCTileNode spriteNodeWithImageNamed:@"background"];
-    tile3.anchorPoint = CGPointZero;
-    if(!_leftmostTile) {
-        _leftmostTile = tile3;
-    }
-    if(_rightmostTile){
-        tile3.position = CGPointMake(_rightmostTile.position.x + _rightmostTile.size.width, _rightmostTile.position.y) ;
-    }else{
-        tile3.position = CGPointZero;
-    }
-    
-    tile3.prevTile = _rightmostTile;
-    _rightmostTile.nextTile = tile3;
-    _rightmostTile = tile3;
-    NSLog(@"sdfdsfd %f %f", tile3.position.x, tile3.position.y);
-    
-    [_world addChild:tile3];
+    _foreground = [[ScrollingLayer alloc] initWithTiles:foregroundTile];
+    _foreground.position = CGPointMake(0, 0);
+    _foreground.horizontalScrollSpeed = -40;
+    _foreground.scrolling = YES;
 
     
-    _leftmostTile.prevTile= _rightmostTile;
-    _rightmostTile.nextTile = _leftmostTile;
+    [_world addChild: _foreground];
     
-
+    
     
     //set up player
     _player = [[TPPlane alloc] init];
     //place in middle of scene
-    _player.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
+    //_player.anchorPoint = CGPointZero;
+    _player.position = CGPointMake(self.size.width * .5 - 150, self.size.height * .5 - 150);
     _player.physicsBody.affectedByGravity = NO;
     [_world addChild:_player];
     _player.engineRunning = YES;
     
 }
+
+
+-(SKSpriteNode*)generateGroundTile
+{
+    
+    SKTextureAtlas *graphics = [SKTextureAtlas atlasNamed:@"Graphics"];
+    SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"groundGrass"]];
+    
+    sprite.anchorPoint = CGPointZero;
+    
+    CGFloat offsetX = sprite.frame.size.width * sprite.anchorPoint.x;
+    CGFloat offsetY = sprite.frame.size.height * sprite.anchorPoint.y;
+    
+    //creates a physicsbody for the foreground using the website
+    //dazchong.com/spritekit/ - currently unavailble :(
+    CGMutablePathRef path = CGPathCreateMutable();
+    
+    CGPathMoveToPoint(path, NULL, 403 - offsetX, 15 - offsetY);
+    CGPathAddLineToPoint(path, NULL, 367 - offsetX, 35 - offsetY);
+    CGPathAddLineToPoint(path, NULL, 329 - offsetX, 34 - offsetY);
+    CGPathAddLineToPoint(path, NULL, 287 - offsetX, 7 - offsetY);
+    CGPathAddLineToPoint(path, NULL, 235 - offsetX, 11 - offsetY);
+    CGPathAddLineToPoint(path, NULL, 205 - offsetX, 28 - offsetY);
+    CGPathAddLineToPoint(path, NULL, 168 - offsetX, 20 - offsetY);
+    CGPathAddLineToPoint(path, NULL, 122 - offsetX, 33 - offsetY);
+    CGPathAddLineToPoint(path, NULL, 76 - offsetX, 31 - offsetY);
+    CGPathAddLineToPoint(path, NULL, 46 - offsetX, 11 - offsetY);
+    CGPathAddLineToPoint(path, NULL, 0 - offsetX, 16 - offsetY);
+    
+    sprite.physicsBody = [SKPhysicsBody bodyWithEdgeChainFromPath:path];
+    sprite.physicsBody.categoryBitMask = _GROUND_CATEGORY;
+    return sprite;
+}
+
+
+
+-(void)didBeginContact:(SKPhysicsContact *)contact
+{
+    if(contact.bodyA.categoryBitMask == _PLANE_CATEGORY){
+        [self.player collide:contact.bodyB];
+    }
+    else if (contact.bodyB.categoryBitMask == _PLANE_CATEGORY){
+        [self.player collide:contact.bodyA];
+    }
+}
+
 
 
 
@@ -159,7 +159,6 @@ static const CGFloat kScrollSpeed = 70;
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
-    //[self.player update];
     static CFTimeInterval lastCallTime;
     CFTimeInterval timeElapsd = currentTime - lastCallTime;
     if (timeElapsd > 10.0 / 60.0 ){
@@ -167,26 +166,11 @@ static const CGFloat kScrollSpeed = 70;
     }
     lastCallTime = currentTime;
     
-    CGFloat scrollDistance = kScrollSpeed * timeElapsd;
-    
-    SCTileNode *tile = _leftmostTile;
-    do{
-        tile.position = CGPointMake(tile.position.x + (scrollDistance * direction), tile.position.y);
-        tile = tile.nextTile;
-    }while (tile != _leftmostTile);
-    
-    if(direction == -1){
-        if(_leftmostTile.position.x + _leftmostTile.size.width < 0){
-         _leftmostTile.position = CGPointMake(_rightmostTile.position.x + _rightmostTile.size.width ,
-                                              _leftmostTile.position.y);
-            _rightmostTile = _leftmostTile;
-            _leftmostTile = _leftmostTile.nextTile;
-        }
-    }
-    if(self.player.accelerating){
-        //calling every frame, more force equals faster movement,
-        //takes into account the mass of plane
-        [_player.physicsBody applyForce:CGVectorMake(0.0, 100)];
+
+    [self.player update];
+    if(!self.player.crashed){
+        [self.background updateWithTimesElapsed:timeElapsd];
+        [self.foreground updateWithTimesElapsed:timeElapsd];
     }
     
 }
