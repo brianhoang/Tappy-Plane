@@ -155,6 +155,18 @@ static NSString* const keyPlaneAnimation = @"PlaneAnimation";
     }
 }
 
+-(void)reset
+{
+    //reset plane
+    self.crashed = NO;
+    self.engineRunning = YES;
+    self.physicsBody.velocity = CGVectorMake(0, 0);
+    self.zRotation = 0.0;
+    self.physicsBody.angularVelocity = 0.0;
+    [self setRandomColor];
+
+    
+}
 
 -(void)update{
     
@@ -162,6 +174,11 @@ static NSString* const keyPlaneAnimation = @"PlaneAnimation";
         //calling every frame, more force equals faster movement,
         //takes into account the mass of plane
         [self.physicsBody applyForce:CGVectorMake(0.0, 100)];
+    }
+    //rotation effect
+    if(!self.crashed){
+    //1 randian = 57.3  degree
+        self.zRotation = fmaxf(fminf(self.physicsBody.velocity.dy, 400), -400) / 400;
     }
 }
 

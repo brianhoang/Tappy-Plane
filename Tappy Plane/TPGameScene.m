@@ -62,7 +62,6 @@
     }
     //_background = nil;
     _background = [[ScrollingLayer alloc] initWithTiles:backgroundTiles];
-    _background.position = CGPointMake(0, 30);
     _background.horizontalScrollSpeed = -60;
     _background.scrolling = YES;
     [_world addChild: _background];
@@ -75,7 +74,6 @@
         [foregroundTile addObject:[self generateGroundTile]];
     }
     _foreground = [[ScrollingLayer alloc] initWithTiles:foregroundTile];
-    _foreground.position = CGPointMake(0, 0);
     _foreground.horizontalScrollSpeed = -40;
     _foreground.scrolling = YES;
 
@@ -87,11 +85,13 @@
     //set up player
     _player = [[TPPlane alloc] init];
     //place in middle of scene
-    //_player.anchorPoint = CGPointZero;
-    _player.position = CGPointMake(self.size.width * .5 - 150, self.size.height * .5 - 150);
+    _player.position = CGPointMake(self.size.width * .5 -190, self.size.height * .5 -190);
     _player.physicsBody.affectedByGravity = NO;
-    [_world addChild:_player];
     _player.engineRunning = YES;
+    [_world addChild:_player];
+    
+    //start a new game
+//    [self newGame];
     
 }
 
@@ -140,14 +140,32 @@
     }
 }
 
-
+-(void)newGame
+{
+    //reset layers
+    self.foreground.position = CGPointZero;
+    [self.foreground layoutTiles];
+    self.background.position = CGPointMake(0, 30);
+    [self.background layoutTiles];
+    
+    //reset plane
+    self.player.position = CGPointMake(self.size.width * .5, self.size.height * .5);
+    self.player.physicsBody.affectedByGravity = NO;
+    [self.player reset];
+}
 
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     for (UITouch *touch in touches){
-        _player.physicsBody.affectedByGravity = YES;
-        self.player.accelerating = YES;
+        if (self.player.crashed){
+            //reset game
+            [self newGame];
+        }
+        else{
+            _player.physicsBody.affectedByGravity = YES;
+            self.player.accelerating = YES;
+        }
     }
 }
 

@@ -18,5 +18,6 @@
 -(void)setRandomColor;
 -(void)update;
 -(void)collide:(SKPhysicsBody*)body;
+-(void)reset;
 
 @end
