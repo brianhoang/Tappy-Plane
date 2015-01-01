@@ -23,6 +23,7 @@
 		93A50C861A4E75A000B09EC2 /* TPPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50C851A4E75A000B09EC2 /* TPPlane.m */; };
 		93A50C881A4E782B00B09EC2 /* PlaneAnimation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */; };
 		93BD2F391A4FF7E70099A96D /* SCTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BD2F381A4FF7E70099A96D /* SCTileNode.m */; };
+		93D9E6B11A551AD40043DE48 /* ObstacleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D9E6B01A551AD40043DE48 /* ObstacleLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlaneAnimation.plist; sourceTree = "<group>"; };
 		93BD2F371A4FF7E70099A96D /* SCTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTileNode.h; sourceTree = "<group>"; };
 		93BD2F381A4FF7E70099A96D /* SCTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTileNode.m; sourceTree = "<group>"; };
+		93D9E6AF1A551AD40043DE48 /* ObstacleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleLayer.h; sourceTree = "<group>"; };
+		93D9E6B01A551AD40043DE48 /* ObstacleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				930A1D111A510BB600D7B116 /* ScrollingLayer.m */,
 				930A1D131A512DA100D7B116 /* Constants.h */,
 				930A1D151A512DA100D7B116 /* Constants.m */,
+				93D9E6AF1A551AD40043DE48 /* ObstacleLayer.h */,
+				93D9E6B01A551AD40043DE48 /* ObstacleLayer.m */,
 			);
 			path = "Tappy Plane";
 			sourceTree = "<group>";
@@ -272,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93D9E6B11A551AD40043DE48 /* ObstacleLayer.m in Sources */,
 				93A50BF21A4E6AA500B09EC2 /* GameViewController.m in Sources */,
 				93BD2F391A4FF7E70099A96D /* SCTileNode.m in Sources */,
 				93A50BEA1A4E6AA500B09EC2 /* AppDelegate.m in Sources */,

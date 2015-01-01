@@ -10,6 +10,8 @@
 
 @interface TPGameScene : SKScene <SKPhysicsContactDelegate>
 
+@property (nonatomic) BOOL justStarted;
+
 
 
 @end

@@ -23,6 +23,7 @@ const uint32_t _GROUND_CATEGORY   = 0x1 << 1;
 @end
 
 static NSString* const keyPlaneAnimation = @"PlaneAnimation";
+static const CGFloat maxHeight = 340;;
 
 @implementation TPPlane
 
@@ -81,7 +82,7 @@ static NSString* const keyPlaneAnimation = @"PlaneAnimation";
 
 -(void)setEngineRunning:(BOOL)engineRunning
 {
-    _engineRunning = engineRunning && (!self.crashed);
+    _engineRunning = engineRunning; //&& (!self.crashed);
     if(engineRunning){
         self.puffTrail.targetNode = self.parent;
         [self actionForKey:keyPlaneAnimation].speed = 1;
@@ -170,7 +171,7 @@ static NSString* const keyPlaneAnimation = @"PlaneAnimation";
 
 -(void)update{
     
-    if(self.accelerating){
+    if(self.accelerating && self.position.y < maxHeight){
         //calling every frame, more force equals faster movement,
         //takes into account the mass of plane
         [self.physicsBody applyForce:CGVectorMake(0.0, 100)];

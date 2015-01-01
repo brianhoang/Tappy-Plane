@@ -10,6 +10,7 @@
 #import "TPPlane.h"
 #import "ScrollingLayer.h"
 #import "Constants.h"
+#import "ObstacleLayer.h"
 
 @interface TPGameScene()
 
@@ -17,6 +18,7 @@
 @property (nonatomic) SKNode  *world;
 @property (nonatomic) ScrollingLayer *background;
 @property (nonatomic) ScrollingLayer *foreground;
+@property (nonatomic) ObstacleLayer *obstacle;
 
 
 @end
@@ -25,6 +27,8 @@
 
 
 -(void)didMoveToView:(SKView *)view {
+    
+    self.justStarted = YES;
     
     //set background color
     self.backgroundColor = [SKColor colorWithRed:.835294118 green:.929411765 blue:.968627451 alpha:1.0];
@@ -67,6 +71,15 @@
     [_world addChild: _background];
     
     
+    //setup obstacles
+    _obstacle = [[ObstacleLayer alloc] init];
+    _obstacle.horizontalScrollSpeed = -80;
+    _obstacle.scrolling = YES;
+    _obstacle.floor = 0.0;
+    _obstacle.ceiling = self.size.height;
+    [_world addChild:_obstacle];
+    
+    
     //setup foreground
     NSMutableArray *foregroundTile = [[NSMutableArray alloc] init];
 
@@ -74,24 +87,28 @@
         [foregroundTile addObject:[self generateGroundTile]];
     }
     _foreground = [[ScrollingLayer alloc] initWithTiles:foregroundTile];
-    _foreground.horizontalScrollSpeed = -40;
+    _foreground.horizontalScrollSpeed = -80;
     _foreground.scrolling = YES;
-
-    
     [_world addChild: _foreground];
-    
     
     
     //set up player
     _player = [[TPPlane alloc] init];
     //place in middle of scene
-    _player.position = CGPointMake(self.size.width * .5 -190, self.size.height * .5 -190);
+   // _player.position = CGPointMake(self.size.width * .5 -190, self.size.height * .5 -190);
+    _player.position = CGPointMake(667 * 0.5, 375 * 0.5);
     _player.physicsBody.affectedByGravity = NO;
-    _player.engineRunning = YES;
+   _player.engineRunning = YES;
     [_world addChild:_player];
-    
+
     //start a new game
-//    [self newGame];
+    
+    
+
+    [self newGame];
+   // [_world addChild:_player];
+    
+
     
 }
 
@@ -145,6 +162,9 @@
     //reset layers
     self.foreground.position = CGPointZero;
     [self.foreground layoutTiles];
+    self.obstacle.position = CGPointZero;
+    [self.obstacle reset];
+    self.obstacle.scrolling = NO;
     self.background.position = CGPointMake(0, 30);
     [self.background layoutTiles];
     
@@ -158,6 +178,8 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     for (UITouch *touch in touches){
+        
+        
         if (self.player.crashed){
             //reset game
             [self newGame];
@@ -165,6 +187,7 @@
         else{
             _player.physicsBody.affectedByGravity = YES;
             self.player.accelerating = YES;
+            self.obstacle.scrolling = YES;
         }
     }
 }
@@ -189,6 +212,7 @@
     if(!self.player.crashed){
         [self.background updateWithTimesElapsed:timeElapsd];
         [self.foreground updateWithTimesElapsed:timeElapsd];
+        [self.obstacle updateWithTimesElapsed:timeElapsd];
     }
     
 }
