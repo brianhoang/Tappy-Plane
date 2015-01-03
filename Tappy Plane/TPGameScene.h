@@ -7,11 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "Collectable.h"
 
-@interface TPGameScene : SKScene <SKPhysicsContactDelegate>
-
-@property (nonatomic) BOOL justStarted;
-
-
+@interface TPGameScene : SKScene <SKPhysicsContactDelegate, CollectableDelegate>
 
 @end

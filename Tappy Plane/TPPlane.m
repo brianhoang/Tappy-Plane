@@ -7,7 +7,8 @@
 //
 
 #import "TPPlane.h"
-//#import "Constants.h"
+#import "Constants.h"
+#import "Collectable.h"
 
 const uint32_t _PLANE_CATEGORY    = 0x1 << 0;
 const uint32_t _GROUND_CATEGORY   = 0x1 << 1;
@@ -52,8 +53,10 @@ static const CGFloat maxHeight = 340;;
         self.physicsBody = [SKPhysicsBody bodyWithPolygonFromPath:path];
         self.physicsBody.mass = 0.08;
         self.physicsBody.categoryBitMask = _PLANE_CATEGORY;
-        //lets us know when plane touches ground
-        self.physicsBody.contactTestBitMask = _GROUND_CATEGORY;
+        //lets us know when plane touches ground or star
+        self.physicsBody.contactTestBitMask = _GROUND_CATEGORY | _STAR_CATEGORY ;
+        //plane will not be affected by physics if it touches a star, ie slows down
+        self.physicsBody.collisionBitMask = _GROUND_CATEGORY;
 
         
         //init arry to told animation actions
@@ -106,7 +109,7 @@ static const CGFloat maxHeight = 340;;
 -(void)setRandomColor
 {
     [self removeActionForKey:keyPlaneAnimation ];
-    SKAction *animation =[self.planeAnimations objectAtIndex:arc4random_uniform((u_int32_t)self.planeAnimations.count)];
+    SKAction *animation =[self.planeAnimations objectAtIndex:arc4random_uniform((uint)self.planeAnimations.count)];
 
     [self runAction: animation withKey:keyPlaneAnimation];
     if(!self.engineRunning){
@@ -152,6 +155,12 @@ static const CGFloat maxHeight = 340;;
     //if it hits the ground
         if (body.categoryBitMask == _GROUND_CATEGORY){
             self.crashed = YES;
+        }
+        if (body.categoryBitMask  == _STAR_CATEGORY){
+            //removes the star when star and planes collides
+            if([body.node respondsToSelector:@selector(collect)]){
+                [body.node performSelector:@selector(collect)];
+            }
         }
     }
 }

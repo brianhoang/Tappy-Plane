@@ -13,5 +13,7 @@
 
 extern const uint32_t _PLANE_CATEGORY;
 extern const uint32_t _GROUND_CATEGORY;
+extern const uint32_t _STAR_CATEGORY;
+
 
 @end

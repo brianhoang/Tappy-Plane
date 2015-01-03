@@ -12,6 +12,7 @@
 
 extern const uint32_t _PLANE_CATEGORY    = 0x1 << 0;
 extern const uint32_t _GROUND_CATEGORY   = 0x1 << 1;
+extern const uint32_t _STAR_CATEGORY     = 0x1 << 2;
 
 
 @end

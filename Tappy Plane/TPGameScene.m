@@ -11,6 +11,7 @@
 #import "ScrollingLayer.h"
 #import "Constants.h"
 #import "ObstacleLayer.h"
+#import "BitMapFont.h"
 
 @interface TPGameScene()
 
@@ -19,7 +20,8 @@
 @property (nonatomic) ScrollingLayer *background;
 @property (nonatomic) ScrollingLayer *foreground;
 @property (nonatomic) ObstacleLayer *obstacle;
-
+@property (nonatomic) BitMapFont   *scoreLabel;
+@property (nonatomic) NSInteger score;
 
 @end
 
@@ -28,7 +30,8 @@
 
 -(void)didMoveToView:(SKView *)view {
     
-    self.justStarted = YES;
+    //maunally setting scene size
+    self.size = CGSizeMake(667, 375);
     
     //set background color
     self.backgroundColor = [SKColor colorWithRed:.835294118 green:.929411765 blue:.968627451 alpha:1.0];
@@ -73,6 +76,7 @@
     
     //setup obstacles
     _obstacle = [[ObstacleLayer alloc] init];
+    _obstacle.collectableDelegate = self;
     _obstacle.horizontalScrollSpeed = -80;
     _obstacle.scrolling = YES;
     _obstacle.floor = 0.0;
@@ -94,17 +98,21 @@
     
     //set up player
     _player = [[TPPlane alloc] init];
+    _player.position = CGPointZero;
     //place in middle of scene
    // _player.position = CGPointMake(self.size.width * .5 -190, self.size.height * .5 -190);
-    _player.position = CGPointMake(667 * 0.5, 375 * 0.5);
+   // _player.position = CGPointMake(self.size.width / 3, (self.size.height / 3));
     _player.physicsBody.affectedByGravity = NO;
    _player.engineRunning = YES;
     [_world addChild:_player];
+    
+    //setup score label
+    _scoreLabel = [[BitMapFont alloc]initWithText:@"0" andFontName:@"number"];
+    _scoreLabel.position = CGPointMake(self.size.width * 0.5, (self.size.height *0.5) + 100);
+    [_world addChild:_scoreLabel];
+    
 
     //start a new game
-    
-    
-
     [self newGame];
    // [_world addChild:_player];
     
@@ -169,18 +177,30 @@
     [self.background layoutTiles];
     
     //reset plane
-    self.player.position = CGPointMake(self.size.width * .5, self.size.height * .5);
+    self.player.position = CGPointMake((self.size.width * .5) - 150, self.size.height * .5);
     self.player.physicsBody.affectedByGravity = NO;
     [self.player reset];
+    
+    //reset score
+    self.score = 0;
 }
 
+
+-(void)wasCollected:(Collectable *)collectable
+{
+    self.score += collectable.pointValue;
+}
+
+-(void)setScore:(NSInteger)score
+{
+    _score = score;
+    self.scoreLabel.text = [NSString stringWithFormat:@"%ld", (long)score];
+}
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
     for (UITouch *touch in touches){
-        
-        
-        if (self.player.crashed){
+            if (self.player.crashed){
             //reset game
             [self newGame];
         }
