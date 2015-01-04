@@ -18,6 +18,7 @@ const uint32_t _GROUND_CATEGORY   = 0x1 << 1;
 //holes animation actions
 @property (nonatomic) NSMutableArray *planeAnimations;
 @property (nonatomic) SKEmitterNode *puffTrail;
+@property (nonatomic) SKEmitterNode *black;
 @property (nonatomic) CGFloat puffBirthRate;
 
 
@@ -124,6 +125,23 @@ static const CGFloat maxHeight = 340;;
     if (crashed){
         self.engineRunning = NO;
         self.accelerating = NO;
+        NSString *blackSmoke = [[NSBundle mainBundle] pathForResource:@"Black" ofType:@"sks"];
+        _black = [NSKeyedUnarchiver unarchiveObjectWithFile:blackSmoke];
+        _black.position = CGPointMake(-self.size.width * 0.5, -10);
+        _black.targetNode = self.parent;
+        [self addChild:_black ];
+
+
+        /*
+         //set a deplay time
+        double delaySec = 1.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delaySec * NSEC_PER_SEC);
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self addChild:_black ];
+
+        });
+
+         */
     }
 }
 
@@ -174,7 +192,7 @@ static const CGFloat maxHeight = 340;;
     self.zRotation = 0.0;
     self.physicsBody.angularVelocity = 0.0;
     [self setRandomColor];
-
+    [_black removeFromParent];
     
 }
 

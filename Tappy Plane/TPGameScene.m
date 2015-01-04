@@ -12,6 +12,8 @@
 #import "Constants.h"
 #import "ObstacleLayer.h"
 #import "BitMapFont.h"
+#import "TileSetTexture.h"
+#import "Button.h"
 
 @interface TPGameScene()
 
@@ -22,6 +24,7 @@
 @property (nonatomic) ObstacleLayer *obstacle;
 @property (nonatomic) BitMapFont   *scoreLabel;
 @property (nonatomic) NSInteger score;
+
 
 @end
 
@@ -100,8 +103,6 @@
     _player = [[TPPlane alloc] init];
     _player.position = CGPointZero;
     //place in middle of scene
-   // _player.position = CGPointMake(self.size.width * .5 -190, self.size.height * .5 -190);
-   // _player.position = CGPointMake(self.size.width / 3, (self.size.height / 3));
     _player.physicsBody.affectedByGravity = NO;
    _player.engineRunning = YES;
     [_world addChild:_player];
@@ -111,13 +112,24 @@
     _scoreLabel.position = CGPointMake(self.size.width * 0.5, (self.size.height *0.5) + 100);
     [_world addChild:_scoreLabel];
     
+    //set up button
+    Button* button = [Button spriteNodeWithTexture:[graphics textureNamed:@"buttonPlay"]];
+    button.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
+    button.zPosition = 1.0;
+    [button setPressedTarget:self withAction:@selector(pressedPlayButton)];
+    [self  addChild:button];
 
     //start a new game
     [self newGame];
-   // [_world addChild:_player];
     
 
     
+}
+
+
+-(void)pressedPlayButton
+{
+    NSLog(@"pressedplaybutton");
 }
 
 
@@ -166,9 +178,17 @@
 }
 
 -(void)newGame
-{
+{    
+    //random tileset
+    [[TileSetTexture getProvider] randomTiles];
+    
     //reset layers
     self.foreground.position = CGPointZero;
+    
+    for(SKSpriteNode *node in self.foreground.children){
+        node.texture = [[TileSetTexture getProvider] getTextureForKey:@"ground"];
+    }
+    
     [self.foreground layoutTiles];
     self.obstacle.position = CGPointZero;
     [self.obstacle reset];

@@ -11,6 +11,7 @@
 		930A1D121A510BB600D7B116 /* ScrollingLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 930A1D111A510BB600D7B116 /* ScrollingLayer.m */; };
 		9330FD1D1A57DE5000F83600 /* Collectable.m in Sources */ = {isa = PBXBuildFile; fileRef = 9330FD1C1A57DE5000F83600 /* Collectable.m */; };
 		9330FD201A57E5AA00F83600 /* BitMapFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 9330FD1F1A57E5AA00F83600 /* BitMapFont.m */; };
+		939D9CB51A59357800001872 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 939D9CB41A59357800001872 /* Button.m */; };
 		93A052B81A4FC56E000AC325 /* PlaneTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = 93A052B61A4FC56E000AC325 /* PlaneTrail.sks */; };
 		93A052B91A4FC56E000AC325 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 93A052B71A4FC56E000AC325 /* spark.png */; };
 		93A50BE71A4E6AA500B09EC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50BE61A4E6AA500B09EC2 /* main.m */; };
@@ -26,6 +27,9 @@
 		93A50C881A4E782B00B09EC2 /* PlaneAnimation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */; };
 		93BD2F391A4FF7E70099A96D /* SCTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BD2F381A4FF7E70099A96D /* SCTileNode.m */; };
 		93D9E6B11A551AD40043DE48 /* ObstacleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D9E6B01A551AD40043DE48 /* ObstacleLayer.m */; };
+		93E82E9D1A59075D006CCF67 /* TileSet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93E82E9C1A59075D006CCF67 /* TileSet.plist */; };
+		93E82EA01A5909FA006CCF67 /* TileSetTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E82E9F1A5909FA006CCF67 /* TileSetTexture.m */; };
+		93E82EA21A591B26006CCF67 /* Black.sks in Resources */ = {isa = PBXBuildFile; fileRef = 93E82EA11A591B26006CCF67 /* Black.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,8 @@
 		9330FD1C1A57DE5000F83600 /* Collectable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Collectable.m; sourceTree = "<group>"; };
 		9330FD1E1A57E5AA00F83600 /* BitMapFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitMapFont.h; sourceTree = "<group>"; };
 		9330FD1F1A57E5AA00F83600 /* BitMapFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitMapFont.m; sourceTree = "<group>"; };
+		939D9CB31A59357800001872 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
+		939D9CB41A59357800001872 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
 		93A052B61A4FC56E000AC325 /* PlaneTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaneTrail.sks; sourceTree = "<group>"; };
 		93A052B71A4FC56E000AC325 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		93A50BE11A4E6AA500B09EC2 /* Tappy Plane.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tappy Plane.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +80,10 @@
 		93BD2F381A4FF7E70099A96D /* SCTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTileNode.m; sourceTree = "<group>"; };
 		93D9E6AF1A551AD40043DE48 /* ObstacleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleLayer.h; sourceTree = "<group>"; };
 		93D9E6B01A551AD40043DE48 /* ObstacleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleLayer.m; sourceTree = "<group>"; };
+		93E82E9C1A59075D006CCF67 /* TileSet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TileSet.plist; sourceTree = "<group>"; };
+		93E82E9E1A5909FA006CCF67 /* TileSetTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileSetTexture.h; sourceTree = "<group>"; };
+		93E82E9F1A5909FA006CCF67 /* TileSetTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileSetTexture.m; sourceTree = "<group>"; };
+		93E82EA11A591B26006CCF67 /* Black.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Black.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +155,11 @@
 				9330FD1C1A57DE5000F83600 /* Collectable.m */,
 				9330FD1E1A57E5AA00F83600 /* BitMapFont.h */,
 				9330FD1F1A57E5AA00F83600 /* BitMapFont.m */,
+				93E82E9E1A5909FA006CCF67 /* TileSetTexture.h */,
+				93E82E9F1A5909FA006CCF67 /* TileSetTexture.m */,
+				93E82EA11A591B26006CCF67 /* Black.sks */,
+				939D9CB31A59357800001872 /* Button.h */,
+				939D9CB41A59357800001872 /* Button.m */,
 			);
 			path = "Tappy Plane";
 			sourceTree = "<group>";
@@ -179,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */,
+				93E82E9C1A59075D006CCF67 /* TileSet.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -263,7 +279,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93E82EA21A591B26006CCF67 /* Black.sks in Resources */,
 				93A50BFA1A4E6AA500B09EC2 /* LaunchScreen.xib in Resources */,
+				93E82E9D1A59075D006CCF67 /* TileSet.plist in Resources */,
 				93A50C881A4E782B00B09EC2 /* PlaneAnimation.plist in Resources */,
 				93A50BEF1A4E6AA500B09EC2 /* GameScene.sks in Resources */,
 				93A052B91A4FC56E000AC325 /* spark.png in Resources */,
@@ -294,9 +312,11 @@
 				9330FD201A57E5AA00F83600 /* BitMapFont.m in Sources */,
 				930A1D0F1A510A7B00D7B116 /* ScrollingNode.m in Sources */,
 				93A50BE71A4E6AA500B09EC2 /* main.m in Sources */,
+				939D9CB51A59357800001872 /* Button.m in Sources */,
 				9330FD1D1A57DE5000F83600 /* Collectable.m in Sources */,
 				930A1D121A510BB600D7B116 /* ScrollingLayer.m in Sources */,
 				93A50C861A4E75A000B09EC2 /* TPPlane.m in Sources */,
+				93E82EA01A5909FA006CCF67 /* TileSetTexture.m in Sources */,
 				93A50C111A4E6B4700B09EC2 /* TPGameScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,6 +455,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = "Tappy Plane/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -445,6 +466,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				INFOPLIST_FILE = "Tappy Plane/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

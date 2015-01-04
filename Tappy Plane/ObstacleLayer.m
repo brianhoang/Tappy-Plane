@@ -8,6 +8,8 @@
 
 #import "ObstacleLayer.h"
 #import "Constants.h"
+#import "TileSetTexture.h"
+
 @interface ObstacleLayer()
 
 //maker used to know when to place an obstacle
@@ -42,6 +44,14 @@ static NSString *const keyStar = @"star";
     //if new game, move current objects to the left of screen for reuse
     for (SKNode *node in self.children){
         node.position = CGPointMake(-1000, 0);
+        //getting new textures
+        if(node.name == keyMountainUp){
+            ((SKSpriteNode*)node).texture = [[TileSetTexture getProvider] getTextureForKey:@"mountainUp"];
+        }
+        if(node.name == keyMountainDown){
+            ((SKSpriteNode*)node).texture = [[TileSetTexture getProvider] getTextureForKey:@"mountainDown"];
+        }
+
     }
     
     //reposition marker
@@ -135,7 +145,7 @@ mountainDown.position = CGPointMake(self.marker, mountainUp.position.y + mountai
     SKTextureAtlas *graphics = [SKTextureAtlas atlasNamed:@"Graphics"];
     
     if(key == keyMountainUp){
-        object = [SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"MountainGrass"]];
+        object = [SKSpriteNode spriteNodeWithTexture: [[TileSetTexture getProvider] getTextureForKey:@"mountainUp"]];
         
         //from that website that is unavaibale
         CGFloat offsetX = object.frame.size.width * object.anchorPoint.x;
@@ -152,8 +162,7 @@ mountainDown.position = CGPointMake(self.marker, mountainUp.position.y + mountai
     }
     
    else if(key == keyMountainDown){
-        object = [SKSpriteNode spriteNodeWithTexture:[graphics textureNamed:@"MountainGrassDown"]];
-        
+       object = [SKSpriteNode spriteNodeWithTexture: [[TileSetTexture getProvider] getTextureForKey:@"mountainDown"]];
         CGFloat offsetX = object.frame.size.width * object.anchorPoint.x;
         CGFloat offsetY = object.frame.size.height * object.anchorPoint.y;
         CGMutablePathRef path = CGPathCreateMutable();
