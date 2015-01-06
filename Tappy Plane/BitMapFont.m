@@ -16,6 +16,7 @@
         _text = text;
         _fontName = fontName;
         _letterSpacing = 2.0;
+        _aligment = BitMapFontAlligmentCenter;
         [self updateText];
     }
     return self;
@@ -46,6 +47,16 @@
 }
 
 
+-(void)setAligment:(BitMapFontAligment)aligment
+{
+    if (_aligment != aligment)
+    {
+        _aligment = aligment;
+        [self updateText];
+    }
+}
+
+
 -(void)updateText
 {
     //removes unused nodes
@@ -61,14 +72,14 @@
     SKTextureAtlas* atlas = [SKTextureAtlas atlasNamed:@"Graphics"];
     
     //loop through all chacters in text
-    for(NSUInteger i = 0; i <self.text.length; i++){
+    for(NSUInteger i = 0; i < self.text.length; i++){
         //get character in text for current position in loop
         unichar c = [self.text characterAtIndex:i];
         //build texture name from character and font name %@ for string, %C for char
         NSString* textureName = [NSString stringWithFormat:@"%@%C", self.fontName, c];
         
         SKSpriteNode *letter;
-        if(i < self.children.count){
+        if(i < self.children.count ){
             //reuse existinf node
             letter = [self.children objectAtIndex:i];
             letter.texture = [atlas textureNamed:textureName];
@@ -93,7 +104,24 @@
     }
     
     //center text
-    CGPoint adjustment = CGPointMake(-totalSize.width * 0.5, -totalSize.height * 0.5);
+    CGPoint adjustment;
+    
+    switch (self.aligment) {
+        case BitMapFontAlligmentLeft:
+            adjustment = CGPointMake(0.0, -totalSize.height * 0.5);
+            break;
+        case BitMapFontAlligmentCenter:
+            adjustment = CGPointMake(-totalSize.width * 0.5, -totalSize.height * 0.5);
+            break;
+        case BitMapFontAlligmentRight:
+            adjustment = CGPointMake(-totalSize.width, -totalSize.height * 0.5);
+            break;
+        default:
+            break;
+    }
+    
+    
+    
     for (SKNode* letter in self.children){
         letter.position = CGPointMake(letter.position.x + adjustment.x, letter.position.y + adjustment.y);
     }

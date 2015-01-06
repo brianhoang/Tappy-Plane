@@ -26,6 +26,7 @@
 		93A50C861A4E75A000B09EC2 /* TPPlane.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A50C851A4E75A000B09EC2 /* TPPlane.m */; };
 		93A50C881A4E782B00B09EC2 /* PlaneAnimation.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */; };
 		93BD2F391A4FF7E70099A96D /* SCTileNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 93BD2F381A4FF7E70099A96D /* SCTileNode.m */; };
+		93C00CFD1A5BADD400F1485C /* GameOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C00CFC1A5BADD400F1485C /* GameOverMenu.m */; };
 		93D9E6B11A551AD40043DE48 /* ObstacleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D9E6B01A551AD40043DE48 /* ObstacleLayer.m */; };
 		93E82E9D1A59075D006CCF67 /* TileSet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 93E82E9C1A59075D006CCF67 /* TileSet.plist */; };
 		93E82EA01A5909FA006CCF67 /* TileSetTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 93E82E9F1A5909FA006CCF67 /* TileSetTexture.m */; };
@@ -78,6 +79,8 @@
 		93A50C871A4E782B00B09EC2 /* PlaneAnimation.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PlaneAnimation.plist; sourceTree = "<group>"; };
 		93BD2F371A4FF7E70099A96D /* SCTileNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCTileNode.h; sourceTree = "<group>"; };
 		93BD2F381A4FF7E70099A96D /* SCTileNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCTileNode.m; sourceTree = "<group>"; };
+		93C00CFB1A5BADD400F1485C /* GameOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverMenu.h; sourceTree = "<group>"; };
+		93C00CFC1A5BADD400F1485C /* GameOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverMenu.m; sourceTree = "<group>"; };
 		93D9E6AF1A551AD40043DE48 /* ObstacleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObstacleLayer.h; sourceTree = "<group>"; };
 		93D9E6B01A551AD40043DE48 /* ObstacleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObstacleLayer.m; sourceTree = "<group>"; };
 		93E82E9C1A59075D006CCF67 /* TileSet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TileSet.plist; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 				93E82EA11A591B26006CCF67 /* Black.sks */,
 				939D9CB31A59357800001872 /* Button.h */,
 				939D9CB41A59357800001872 /* Button.m */,
+				93C00CFB1A5BADD400F1485C /* GameOverMenu.h */,
+				93C00CFC1A5BADD400F1485C /* GameOverMenu.m */,
 			);
 			path = "Tappy Plane";
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				939D9CB51A59357800001872 /* Button.m in Sources */,
 				9330FD1D1A57DE5000F83600 /* Collectable.m in Sources */,
 				930A1D121A510BB600D7B116 /* ScrollingLayer.m in Sources */,
+				93C00CFD1A5BADD400F1485C /* GameOverMenu.m in Sources */,
 				93A50C861A4E75A000B09EC2 /* TPPlane.m in Sources */,
 				93E82EA01A5909FA006CCF67 /* TileSetTexture.m in Sources */,
 				93A50C111A4E6B4700B09EC2 /* TPGameScene.m in Sources */,

@@ -14,6 +14,7 @@
 #import "BitMapFont.h"
 #import "TileSetTexture.h"
 #import "Button.h"
+#import "GameOverMenu.h"
 
 @interface TPGameScene()
 
@@ -24,6 +25,7 @@
 @property (nonatomic) ObstacleLayer *obstacle;
 @property (nonatomic) BitMapFont   *scoreLabel;
 @property (nonatomic) NSInteger score;
+@property (nonatomic)  GameOverMenu *gameover;
 
 
 @end
@@ -81,7 +83,7 @@
     _obstacle = [[ObstacleLayer alloc] init];
     _obstacle.collectableDelegate = self;
     _obstacle.horizontalScrollSpeed = -80;
-    _obstacle.scrolling = YES;
+   // _obstacle.scrolling = YES;
     _obstacle.floor = 0.0;
     _obstacle.ceiling = self.size.height;
     [_world addChild:_obstacle];
@@ -101,10 +103,6 @@
     
     //set up player
     _player = [[TPPlane alloc] init];
-    _player.position = CGPointZero;
-    //place in middle of scene
-    _player.physicsBody.affectedByGravity = NO;
-   _player.engineRunning = YES;
     [_world addChild:_player];
     
     //setup score label
@@ -112,12 +110,10 @@
     _scoreLabel.position = CGPointMake(self.size.width * 0.5, (self.size.height *0.5) + 100);
     [_world addChild:_scoreLabel];
     
-    //set up button
-    Button* button = [Button spriteNodeWithTexture:[graphics textureNamed:@"buttonPlay"]];
-    button.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.5);
-    button.zPosition = 1.0;
-    [button setPressedTarget:self withAction:@selector(pressedPlayButton)];
-    [self  addChild:button];
+    
+    //set up game over menu
+    _gameover = [[GameOverMenu alloc] initWithSize:self.size];
+    [self addChild:_gameover];
 
     //start a new game
     [self newGame];
@@ -127,10 +123,6 @@
 }
 
 
--(void)pressedPlayButton
-{
-    NSLog(@"pressedplaybutton");
-}
 
 
 -(SKSpriteNode*)generateGroundTile

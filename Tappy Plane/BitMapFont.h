@@ -8,11 +8,18 @@
 
 #import <SpriteKit/SpriteKit.h>
 
+typedef enum : NSInteger{
+    BitMapFontAlligmentLeft,
+    BitMapFontAlligmentCenter,
+    BitMapFontAlligmentRight
+}BitMapFontAligment;
+
 @interface BitMapFont : SKNode
 
 @property (nonatomic) NSString* fontName;
 @property (nonatomic) NSString* text;
 @property (nonatomic) CGFloat letterSpacing;
+@property (nonatomic) BitMapFontAligment aligment;
 
 -(instancetype)initWithText:(NSString*)text andFontName:(NSString*)fontName;
 
