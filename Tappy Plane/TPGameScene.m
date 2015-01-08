@@ -14,7 +14,12 @@
 #import "BitMapFont.h"
 #import "TileSetTexture.h"
 #import "Button.h"
-#import "GameOverMenu.h"
+
+typedef enum : NSUInteger {
+    GameReady,
+    GameRunning,
+    GameOver
+} GameState;
 
 @interface TPGameScene()
 
@@ -25,10 +30,14 @@
 @property (nonatomic) ObstacleLayer *obstacle;
 @property (nonatomic) BitMapFont   *scoreLabel;
 @property (nonatomic) NSInteger score;
-@property (nonatomic)  GameOverMenu *gameover;
+@property (nonatomic) NSInteger bestScore;
+@property (nonatomic) GameOverMenu *gameOverMenu;
+@property (nonatomic) GameState gameState;
 
 
 @end
+
+static NSString *const keyBestScore = @"BestScore";
 
 @implementation TPGameScene
 
@@ -110,10 +119,12 @@
     _scoreLabel.position = CGPointMake(self.size.width * 0.5, (self.size.height *0.5) + 100);
     [_world addChild:_scoreLabel];
     
+    //load best score
+    self.bestScore = [[NSUserDefaults standardUserDefaults] integerForKey:keyBestScore];
     
     //set up game over menu
-    _gameover = [[GameOverMenu alloc] initWithSize:self.size];
-    [self addChild:_gameover];
+    _gameOverMenu = [[GameOverMenu alloc] initWithSize:self.size];
+    _gameOverMenu.delegate = self;
 
     //start a new game
     [self newGame];
@@ -121,8 +132,6 @@
 
     
 }
-
-
 
 
 -(SKSpriteNode*)generateGroundTile
@@ -158,7 +167,7 @@
 }
 
 
-
+//when plane crashes
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
     if(contact.bodyA.categoryBitMask == _PLANE_CATEGORY){
@@ -168,6 +177,29 @@
         [self.player collide:contact.bodyA];
     }
 }
+
+-(void)pressedStartButton
+{
+    SKSpriteNode *blackRect = [SKSpriteNode spriteNodeWithColor:[SKColor blackColor] size:self.size];
+    blackRect.anchorPoint = CGPointZero;
+    blackRect.alpha = 0.0;
+    //to place black rect on top of scene
+    blackRect.zPosition = 99;
+    [self addChild:blackRect];
+    
+    SKAction *startGame = [SKAction runBlock:^{
+        [self newGame];
+        //removes from scene
+        [self.gameOverMenu removeFromParent];
+    }];
+    
+    //fade in black, resets games, then fade out black
+    SKAction *fadeTransaction = [SKAction sequence:@[[SKAction fadeInWithDuration:0.4],startGame ,[SKAction fadeOutWithDuration:0.6], [SKAction removeFromParent]]];
+    [blackRect runAction:fadeTransaction];
+ 
+}
+
+
 
 -(void)newGame
 {    
@@ -194,7 +226,31 @@
     [self.player reset];
     
     //reset score
+    self.scoreLabel.alpha = 1.0;
     self.score = 0;
+    
+    //set game state to ready
+    self.gameState = GameReady;
+}
+
+-(void)gameOver
+{
+    self.gameState = GameOver;
+    //fade out scorelabel display
+    [self.scoreLabel runAction:[SKAction fadeOutWithDuration:0.4]];
+    //show game over menu
+    self.gameOverMenu.score = self.score;
+    self.gameOverMenu.medal = [self getMedalForScore];
+    if(self.self.score > self.bestScore){
+        self.bestScore = self.score;
+        //using userdefaults to save best score between game sesssion
+        [[NSUserDefaults standardUserDefaults] setInteger:self.bestScore forKey:keyBestScore];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    self.gameOverMenu.bestScore = self.bestScore;
+    [self addChild:self.gameOverMenu];
+    [self.gameOverMenu show];
+
 }
 
 
@@ -211,23 +267,31 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     /* Called when a touch begins */
-    for (UITouch *touch in touches){
-            if (self.player.crashed){
-            //reset game
-            [self newGame];
-        }
-        else{
-            _player.physicsBody.affectedByGravity = YES;
-            self.player.accelerating = YES;
-            self.obstacle.scrolling = YES;
-        }
+  
+    if (self.gameState == GameReady){
+        self.player.physicsBody.affectedByGravity = YES;
+        self.obstacle.scrolling = YES;
+        self.gameState = GameRunning;
+    }
+    
+    if(self.gameState == GameRunning){
+        self.player.accelerating = YES;
     }
 }
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    for (UITouch *touch in touches){
+   
+    if (self.gameState == GameRunning){
         self.player.accelerating = NO;
     }
+}
+
+//method to shake world when plane crashed
+-(void)bump
+{
+    //action to move the scene by -5 and -4 then right back 
+    SKAction *bump = [SKAction sequence:@[[SKAction moveBy:CGVectorMake(-5, -4) duration:0.1], [SKAction moveTo:CGPointZero duration:0.1]]];
+    [self.world runAction:bump];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
@@ -241,12 +305,35 @@
     
 
     [self.player update];
-    if(!self.player.crashed){
+    
+    if (self.gameState == GameRunning && self.player.crashed){
+        // player just crashed in last frame so trigger game over
+        [self bump];
+        [self gameOver];
+    }
+    
+    if(self.gameState != GameOver){
         [self.background updateWithTimesElapsed:timeElapsd];
         [self.foreground updateWithTimesElapsed:timeElapsd];
         [self.obstacle updateWithTimesElapsed:timeElapsd];
     }
     
+}
+
+-(MedalType)getMedalForScore
+{
+    //if best score is high, score must be higher and higher to get ddifferent medals
+    NSInteger adjustedScore = self.score - (self.bestScore / 5);
+    if (adjustedScore >= 45){
+        return MedalGold;
+    }
+    else if (adjustedScore >= 25){
+        return MedalSilver;
+    }
+    else if(adjustedScore >= 10){
+        return MedalBronze;
+    }
+    return MedalNone;
 }
 
 @end

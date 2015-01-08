@@ -10,6 +10,7 @@
 #import "BitMapFont.h"
 #import "Button.h"
 
+
 @interface GameOverMenu()
 
 @property (nonatomic) SKSpriteNode *medalDisplay;
@@ -95,8 +96,8 @@
         
         //set initial values
         self.medal = MedalSilver;
-        self.score= 7;
-        self.bestScore = 100;
+        self.score= 0;
+        self.bestScore = 0;
         
     }
     return  self;
@@ -105,8 +106,10 @@
 
 -(void)pressedPlayButton
 {
-    [self show];
-    NSLog(@"pressedplaybutton");
+    if(self.delegate){
+        [self.delegate pressedStartButton];
+    }
+  
 }
 
 -(void)setScore:(NSInteger)score{
@@ -153,13 +156,13 @@
                                              [SKAction moveByX:0.0 y:100 duration:0.4]]];
     raisePanel.timingMode = SKActionTimingEaseOut;
     //alpha is transparancy, default to one
-    self.panelGroup.alpha = 0.0;
+    self.panelGroup.alpha = 0.001;
     self.panelGroup.position = CGPointMake(self.panelGroup.position.x,  self.panelGroup.position.y - 100);
     [self.panelGroup runAction:[SKAction sequence: @[[SKAction waitForDuration:0.7], raisePanel]]];
     
     //animate play button
     SKAction *fadeButton = [SKAction sequence:@[[SKAction waitForDuration:1.2], [SKAction fadeInWithDuration:0.4]]];
-    self.button.alpha = 0.0;
+    self.button.alpha = 0.001;
     self.button.userInteractionEnabled = NO;
     [self.button runAction:fadeButton completion:^{
         self.button.userInteractionEnabled = YES;
